@@ -168,18 +168,33 @@ a {
 /* ==================== HERO ==================== */
 
 .hero {
-    min-height: 75vh;
+    min-height: 70vh;
 
-    display: grid;
-    grid-template-columns: 1.3fr 0.7fr;
-
+    display: flex;
     align-items: center;
 
-    gap: 60px;
+    position: relative;
+}
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+    top: 50%;
+    right: -10%;
+    z-index: -1;
+
+    width: 500px;
+    height: 500px;
+
+    background: radial-gradient(circle, rgba(79, 140, 255, 0.14), transparent 70%);
+
+    transform: translateY(-50%);
+    pointer-events: none;
 }
 
 .hero-content {
-    max-width: 700px;
+    max-width: 720px;
 }
 
 .hero-content h1 {
@@ -324,45 +339,6 @@ a {
 }
 
 
-/* ==================== HERO VISUAL ==================== */
-
-.hero-visual {
-    display: flex;
-    justify-content: center;
-}
-
-.hero-box {
-    width: 300px;
-    height: 300px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    transition: 0.3s ease;
-}
-
-.hero-box span {
-    font-size: 4rem;
-    color: var(--accent);
-    font-weight: 700;
-    margin-bottom: 20px;
-}
-
-.hero-box h3 {
-    font-size: 1.4rem;
-    margin-bottom: 8px;
-}
-
-.hero-box p {
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-}
-
-
-
 /* ==================== ABOUT ==================== */
 
 .about-content {
@@ -466,6 +442,77 @@ a {
     border-bottom: none;
 }
 
+
+
+/* ==================== PROJECTS ==================== */
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 24px;
+}
+
+.project-card {
+    display: flex;
+    flex-direction: column;
+
+    min-height: 280px;
+    padding: 32px;
+
+    background-color: var(--surface);
+
+    border: 1px solid var(--border);
+}
+
+.project-card-header h3 {
+    margin-bottom: 14px;
+
+    color: var(--text-primary);
+
+    font-size: 1.15rem;
+}
+
+.project-description {
+    flex-grow: 1;
+    margin-bottom: 22px;
+
+    color: var(--text-secondary);
+
+    font-size: 0.92rem;
+}
+
+.technologies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    margin-bottom: 26px;
+}
+
+.technologies span {
+    padding: 5px 12px;
+
+    background-color: var(--surface-light);
+    border: 1px solid var(--border);
+
+    color: var(--text-secondary);
+
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.project-card .project-link {
+    align-self: flex-start;
+
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.project-card .project-link:hover {
+    background-color: var(--accent);
+    color: #ffffff;
+}
 
 
 /* ==================== EXPERIENCE ==================== */
@@ -652,8 +699,6 @@ a {
     }
 
     .hero {
-        grid-template-columns: 1fr;
-
         min-height: auto;
 
         padding: 100px 0;
@@ -661,10 +706,6 @@ a {
 
     .hero-content {
         max-width: 700px;
-    }
-
-    .hero-visual {
-        display: none;
     }
 
     .about-content {
@@ -1004,11 +1045,6 @@ a {
     animation: heroContentIn 0.7s ease-out both;
 }
 
-.hero-visual {
-    animation: heroVisualIn 0.8s ease-out 0.15s both;
-}
-
-
 @keyframes heroContentIn {
 
     from {
@@ -1024,21 +1060,6 @@ a {
 }
 
 
-@keyframes heroVisualIn {
-
-    from {
-        opacity: 0;
-        transform: translateX(20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-
-}
-
-
 /* ==================== SECTION ANIMATION ==================== */
 
 /*
@@ -1049,20 +1070,6 @@ a {
 
 .section-heading {
     transition: transform 0.3s ease;
-}
-
-
-/* ==================== HERO BOX ==================== */
-
-.hero-box {
-    transition:
-        border-color 0.3s ease,
-        transform 0.3s ease;
-}
-
-.hero-box:hover {
-    transform: translateY(-5px);
-    border-color: var(--accent);
 }
 
 
